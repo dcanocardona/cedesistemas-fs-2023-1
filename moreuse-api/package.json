@@ -1,0 +1,24 @@
+{
+  "name": "moreuse-api",
+  "version": "1.0.0",
+  "description": "moreuse api express",
+  "main": "app.js",
+  "scripts": {
+    "start:pro": "set NODE_ENV=pro&&node app.js",
+    "start:dev": "set NODE_ENV=dev&&nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "dcanoc",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.1.3",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^7.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
