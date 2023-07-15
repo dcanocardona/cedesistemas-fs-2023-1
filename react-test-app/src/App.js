@@ -8,7 +8,7 @@ export const App = () => {
     //hooks
     const [pets, setPets] = useState(['Firulays', 'Pluto', 'Toby']);
     const [inputPet, setInputPet] = useState("");
-    
+
     const onAddPet = () => {
         setPets([...pets, inputPet]);
         setInputPet("");
@@ -19,7 +19,7 @@ export const App = () => {
     }
 
     return (
-        <Fragment>
+        <Fragment>  
             <h1>Hola mundo react</h1>
             <Button name="Enviar" />
             <br /><br />

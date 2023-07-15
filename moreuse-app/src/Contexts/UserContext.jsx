@@ -1,11 +1,11 @@
-import React, {createContext, useState}  from "react"
+import React, {createContext, useState} from "react"
 
 const initialState = {
-  isAuth: true,
+  isAuth: false,
   name: '',
   email: '',
   phone: '',
-  address: '',
+  address: ''
 }
 
 export const UserContext = createContext(initialState);
@@ -15,7 +15,7 @@ export const UserContextStore = (props) => {
   const [user, setUser] = useState(initialState);
 
   const setAuthorization = (userData) => {
-    setUser({isAuth: true,...userData});
+    setUser({...userData, isAuth: true});
   }
 
   const removeAuthorization = () => {
@@ -23,7 +23,7 @@ export const UserContextStore = (props) => {
   }
 
   return (
-    <UserContext.Provider value={ {user, setAuthorization, removeAuthorization} }>
+    <UserContext.Provider value={{user, setAuthorization, removeAuthorization}}>
       { props.children }
     </UserContext.Provider>
   )

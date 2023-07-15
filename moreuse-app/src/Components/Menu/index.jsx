@@ -1,8 +1,6 @@
 import {Link} from 'react-router-dom';
-import {MenuContainer} from './styles';
-import {MenuItemsWrapper} from './styles';
+import { MenuCloseWrapper, MenuContainer, MenuItemsWrapper } from './styles';
 import {IoClose} from 'react-icons/io5'
-import {MenuCloseWrapper} from './styles';
 import { useContext } from 'react';
 import { MenuContext } from '../../Contexts/MenuContext';
 import { UserContext } from '../../Contexts/UserContext';
@@ -11,6 +9,11 @@ const OptionsMenu = [
   {
     "name": "Inicio",
     "path": "/"
+  },
+  {
+    "name": "Inicio",
+    "path": "/",
+    "authRequired": true
   },
   {
     "name": "Perfil",
@@ -47,12 +50,12 @@ export const Menu = () => {
         {
           OptionsMenu.map((item, index) => {
               if (user.isAuth && item.authRequired) {
-                <Link key={index} to={item.path}><li>{item.name}</li></Link>
+                return <Link key={index} to={item.path}><li>{item.name}</li></Link>
               }
               if (!user.isAuth && !item.authRequired) {
-                <Link key={index} to={item.path}><li>{item.name}</li></Link>
+                return <Link key={index} to={item.path}><li>{item.name}</li></Link>
               }
-          }
+            }
           )
         }
       </MenuItemsWrapper>
