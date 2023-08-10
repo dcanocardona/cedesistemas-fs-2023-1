@@ -5,6 +5,7 @@ import { HomeComponent } from '../../components/home/home.component';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { SharedModule } from '../../shared/shared.module';
 import { ContactusComponent } from '../../components/contactus/contactus.component';
+import { ClothedetailComponent } from '../../components/clothedetail/clothedetail.component';
 
 
 
@@ -12,7 +13,8 @@ import { ContactusComponent } from '../../components/contactus/contactus.compone
   declarations: [
     DefaultComponent,
     HomeComponent,
-    ContactusComponent],
+    ContactusComponent,
+    ClothedetailComponent],
   imports: [
     CommonModule,
     AppRoutingModule,

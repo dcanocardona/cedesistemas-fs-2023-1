@@ -1,6 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Clothes } from 'src/app/domain/models/Clothes/clothes';
+import { Clothesusecase } from 'src/app/domain/models/Clothes/usecase/clothesusecase';
 
 @Component({
   selector: 'app-home',
@@ -9,9 +12,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient,
+    private clothesUseCase: Clothesusecase,
+    private router:Router) { }
+  clothes! : Clothes;
 
   ngOnInit(): void {
+    this.getClothes();
     this.prueba();
   }
 
@@ -34,6 +41,18 @@ export class HomeComponent implements OnInit {
       error: (e) => console.error(e),
       complete: () => console.info('complete')
   })
+  }
+
+  getClothes(){
+    this.clothesUseCase.getclothes().subscribe((data: Clothes) => {
+      this.clothes = data;
+      console.log(this.clothes);
+    })
+  }
+
+  getClotheDetail(id: any){
+    console.log('llamo al clothe detail component')
+    this.router.navigate(['/default/clothedetail/', id]);
   }
 
 }

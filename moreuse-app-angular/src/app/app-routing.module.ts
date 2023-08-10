@@ -7,6 +7,7 @@ import { LoginComponent } from './UI/components/login/login.component';
 import { FullscreenComponent } from './UI/layouts/fullscreen/fullscreen.component';
 import { RegisterComponent } from './UI/components/register/register.component';
 import { DefaultGuard } from './UI/shared/guards/default.guard';
+import { ClothedetailComponent } from './UI/components/clothedetail/clothedetail.component';
 
 const routes: Routes = [
   {path:'', redirectTo:'default/home', pathMatch:'full'},
@@ -15,7 +16,8 @@ const routes: Routes = [
     canActivate:[DefaultGuard],
     children: [
       {path:"home", component:HomeComponent},
-      {path:"contact", component:ContactusComponent}
+      {path:"contact", component:ContactusComponent},
+      {path:"clothedetail/:id", component:ClothedetailComponent}
     ]
   },
   {

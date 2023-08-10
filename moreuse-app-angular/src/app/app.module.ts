@@ -9,6 +9,11 @@ import { FullscreenModule } from './UI/layouts/fullscreen/fullscreen.module';
 import { Usergateway } from './domain/models/User/gateway/usergateway';
 import { Userusecase } from './domain/models/User/usecase/userusecase';
 import { MoreuseUserService } from './infraestructure/driven-adapter/services/moreuse-user/moreuse-user.service';
+import { ClothesGateway } from './domain/models/Clothes/gateway/clothesgateway';
+import { MoreuseClothesService } from './infraestructure/driven-adapter/services/moreuse-clothes/moreuse-clothes.service';
+import { ClothedetailComponent } from './UI/components/clothedetail/clothedetail.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './infraestructure/driven-adapter/services/helpers/authinterceptor';
 
 @NgModule({
   declarations: [
@@ -21,7 +26,10 @@ import { MoreuseUserService } from './infraestructure/driven-adapter/services/mo
     FullscreenModule,
     SharedModule
   ],
-  providers: [{provide: Usergateway, useClass: MoreuseUserService}],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi:true},
+    {provide: Usergateway, useClass: MoreuseUserService},
+    {provide: ClothesGateway, useClass: MoreuseClothesService}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
